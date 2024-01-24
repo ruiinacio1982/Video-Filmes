@@ -70,13 +70,15 @@ include('ligacao.php');
                     while ($filme=$resFilmes->fetch_assoc()) {
                   ?>
                   <tr class="table-light fs-6">
-                    <td><?= $filme['Codfilmes'] ?></td> <? //Código ?>
-                    <th scope="row"><?= $filme['Nome'] ?></th>
+
+                    <td><?= $filme['Codfilmes'] ?></td>
+                    <th scope="row"><a href="filme.php?cfilme=<?= $filme['Codfilmes'] ?>"><?= $filme['Nome'] ?></a></th>
                     <td><strong>Classificação:</strong> <?= $filme['Classificacao'] ?><br>
                       <strong>Duração: </strong> <?= $filme['Duracao'] ?>m<br>
                       <strong>Género: </strong> <?= $filme['Codgenero'] ?><br>
-                      </td>
+                    </td>
                     <td><?= $filme['ValorAluguer'] ?> €</td>
+                  
                   </tr>
                   <?php  } ?>
                   
