@@ -16,7 +16,7 @@ include('ligacao.php');
 <body>
   <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
     <div class="container">
-      <a href="../" class="navbar-brand">VideoFilmes</a>
+      <a href="index.php" class="navbar-brand">VideoFilmes</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,14 +33,23 @@ include('ligacao.php');
   </div>
 
   <div class="container">
+  <?php
+              // Preparação do SQL para ir buscar 1 filme indicado no GET do filme
+              $consulta = "SELECT * FROM filmes WHERE Codfilmes=" . $_GET['cfilme'];
+              
+              // Execução do query na base de dados e obter resultado
+              $resFilme = $ligacao->query($consulta);
 
+              // Ler a informação do resultado para uma variável filme
+              $filme=$resFilme->fetch_assoc();
+            ?>
     <!-- Filme
       ================================================== -->
     <div class="bs-docs-section">
       <div class="row">
         <!-- Imagem do filme -->
         <div class="col-lg-4">
-          <img class="img-fluid" src="https://media.istockphoto.com/id/1467934174/photo/film-reel-cinema-or-photography-35mm-film-strip-tape-3d-illustration-isolated-on-the-white.webp?b=1&s=170667a&w=0&k=20&c=jfL-Qo7xDMFShvLTrmg3yEurE5p5q_6GNXp37k-LqgI=" />
+          <img class="img-fluid" src="images/<?= $filme['Imagem'] ?>" />
         </div>
         <!-- Info do filme -->
         <div class="col-lg-8">
@@ -61,6 +70,7 @@ include('ligacao.php');
               <h4 class="card-title"><?= $filme['Nome'] ?></h4>
               <p class="card-text">
                 <strong>Sinopse: </strong>
+                <span><?= $filme['Sinopse'] ?></span>
               </p>
               <p>Classificação: <?= $filme['Classificacao'] ?></p>
               <p>Duração: <?= $filme['Duracao'] ?></p>

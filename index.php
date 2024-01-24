@@ -14,7 +14,7 @@ include('ligacao.php');
   <body>
     <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
       <div class="container">
-        <a href="../" class="navbar-brand">VideoFilmes</a>
+        <a href="index.php" class="navbar-brand">VideoFilmes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
