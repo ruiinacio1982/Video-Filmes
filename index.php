@@ -53,6 +53,8 @@ include('ligacao.php');
             </div>
 
             <div class="bs-component">
+              <a class="btn btn-success" href="inserirFilme.php">Inserir Novo filme</a>
+              <p></p>
               <table class="table table-hover">
                 <thead>
                   <tr>
