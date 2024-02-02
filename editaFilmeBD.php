@@ -11,18 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genero = filter_input(INPUT_POST, 'genero');
     $codforn = filter_input(INPUT_POST, 'fornecedor');
     $val = filter_input(INPUT_POST, 'valAluguer');
+    $cod = filter_input(INPUT_POST, 'cFilme');
     
-    $queryInsere="INSERT INTO filmes (nome, classificacao, duracao, codgenero, codfornecedor, valoraluguer) VALUES ";
-    $queryInsere .= " ('$nome', '$class', '$duracao', '$genero', '$codforn', '$val')";
+    $queryAtualiza="UPDATE filmes SET nome ='$nome', classificacao='$class', duracao='$duracao',";
+    $queryAtualiza .= " codgenero='$genero', codfornecedor='$codforn', valoraluguer='$val' WHERE Codfilmes='$cod'";
     
     try {
-        $resultado = $ligacao->query($queryInsere);
-        header("Location: index.php?msg=filmeinserido");
+        $resultado = $ligacao->query($queryAtualiza);
+        header("Location: index.php?msg=filmeatualizado");
         return $resultado;
         
     }
     catch(Exception $e) {
-        echo ' Falha a inserir consulta: '. $ligacao->error;
+        echo ' Falha a atualizar consulta: '. $ligacao->error;
         return 0;
     }
 
