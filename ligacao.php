@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 $servidor="localhost";
 $bd="video_filmes";
 $user="root";

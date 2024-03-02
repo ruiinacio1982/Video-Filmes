@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Jan-2024 às 20:56
+-- Tempo de geração: 02-Mar-2024 às 17:46
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -29,8 +29,9 @@ USE `video_filmes`;
 -- Estrutura da tabela `filmes`
 --
 
-CREATE TABLE `filmes` (
-  `Codfilmes` int(11) NOT NULL,
+DROP TABLE IF EXISTS `filmes`;
+CREATE TABLE IF NOT EXISTS `filmes` (
+  `Codfilmes` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(50) NOT NULL,
   `Sinopse` varchar(5000) DEFAULT NULL,
   `Codgenero` int(11) DEFAULT NULL,
@@ -38,8 +39,9 @@ CREATE TABLE `filmes` (
   `Classificacao` varchar(50) NOT NULL,
   `Codfornecedor` int(11) DEFAULT NULL,
   `ValorAluguer` float NOT NULL,
-  `Imagem` varchar(500) DEFAULT 'https://media.istockphoto.com/id/1467934174/photo/film-reel-cinema-or-photography-35mm-film-strip-tape-3d-illustration-isolated-on-the-white.webp?b=1&s=170667a&w=0&k=20&c=jfL-Qo7xDMFShvLTrmg3yEurE5p5q_6GNXp37k-LqgI='
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Imagem` varchar(500) DEFAULT 'https://media.istockphoto.com/id/1467934174/photo/film-reel-cinema-or-photography-35mm-film-strip-tape-3d-illustration-isolated-on-the-white.webp?b=1&s=170667a&w=0&k=20&c=jfL-Qo7xDMFShvLTrmg3yEurE5p5q_6GNXp37k-LqgI=',
+  PRIMARY KEY (`Codfilmes`)
+) ENGINE=MyISAM AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `filmes`
@@ -134,18 +136,29 @@ INSERT INTO `filmes` (`Codfilmes`, `Nome`, `Sinopse`, `Codgenero`, `Duracao`, `C
 (98, 'Moneyball', '', 4, '135m', 'M12', 3, 2.5, 'filme.png'),
 (99, 'Contrabando', '', 4, '120m', 'M12', 3, 2.5, 'filme.png'),
 (100, 'The Descendents', '', 1, '120m', 'M12', 1, 2.5, 'filme.png'),
-(101, 'Sangue do Meu Sangue', '', 4, '135m', 'M12', 3, 2.5, 'filme.png'),
-(102, 'O ?ltimo Reduto', '', 4, '120m', 'M12', 3, 2.5, 'filme.png');
+(101, 'Sangue do Meu Sangue', '', 4, '135m', 'M12', 3, 2.5, 'filme.png');
+
+-- --------------------------------------------------------
 
 --
--- Índices para tabelas despejadas
+-- Estrutura da tabela `utilizadores`
 --
 
+DROP TABLE IF EXISTS `utilizadores`;
+CREATE TABLE IF NOT EXISTS `utilizadores` (
+  `CodUtilizador` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  PRIMARY KEY (`CodUtilizador`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
 --
--- Índices para tabela `filmes`
+-- Extraindo dados da tabela `utilizadores`
 --
-ALTER TABLE `filmes`
-  ADD PRIMARY KEY (`Codfilmes`);
+
+INSERT INTO `utilizadores` (`CodUtilizador`, `username`, `password`) VALUES
+(1, 'Rui_99999', 'bb831d45f04a02dfaacbc1bd5fdfc35d8282dfcb');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
