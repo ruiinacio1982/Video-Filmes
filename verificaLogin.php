@@ -21,6 +21,14 @@ else {
     try {
         $resultado = $ligacao->query($consulta);
         if($resultado->num_rows>0) {
+            // Ler um registo do resultado
+            $utilizador = $resultado->fetch_assoc();
+            // Extrair o código do utilizador autenticado
+            $cod=$utilizador['CodUtilizador'];
+            // registar na sessão esse código
+            $_SESSION['CodUtil'] = $cod;
+            // registar na sessão o username/login
+            $_SESSION['Username'] = $login;
             header('Location: index.php?log=sucesso');
         }
         else {
