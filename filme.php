@@ -11,6 +11,7 @@ include('ligacao.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -50,7 +51,14 @@ include('ligacao.php');
               $filme=$resFilme->fetch_assoc();
             ?>
           <div class="card border-primary mb-3">
-            <div class="card-header">Informação completa</div>
+            <div class="card-header d-flex justify-content-between">
+              <span class="p-2">Informação completa</span>
+              <form action="carrinho.php" method="POST">
+                <button type="submit" class="btn btn-primary">Alugar <?= $filme['ValorAluguer'] ?>€</button>
+                <input type="hidden" name="id" value="<?= $filme['Codfilmes'] ?>" />
+                <input type="hidden" name="acao" value="add" />
+              </form>
+            </div>
             <div class="card-body">
               <h4 class="card-title"><?= $filme['Nome'] ?></h4>
               <p class="card-text">

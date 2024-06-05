@@ -10,6 +10,7 @@ include('ligacao.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
   <body>
    <?php include_once('menu.php'); ?>
@@ -58,7 +59,7 @@ include('ligacao.php');
                     <!-- Operações -->
                     <td>
                       <a class="btn btn-warning" href="editarFilme.php?cfilme=<?= $filme['Codfilmes'] ?>">Editar</a>
-                      <a class="btn btn-danger" onclick="confirm('Tem a certeza que quer apagar o filme?')" 
+                      <a class="btn btn-danger" onclick="return confirm('Tem a certeza que quer apagar o filme?')" 
                           href="eliminaFilmeBD.php?cfilme=<?= $filme['Codfilmes'] ?>">Eliminar</a>
                     </td>
                   </tr>
@@ -79,6 +80,6 @@ include('ligacao.php');
   <?php include_once('footer.php'); ?>
     
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+   
   </body>
 </html>
